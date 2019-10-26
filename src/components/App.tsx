@@ -7,6 +7,7 @@ import Header from './Header';
 import Main from './Main';
 
 import { fetchAuth } from '../store/auth/actions';
+import Loading from './Loading';
 
 const theme = createMuiTheme({
   palette: {
@@ -47,6 +48,10 @@ function App() {
     .then(() => setIsLoaded(true));
     
   }, [dispatch]);
+
+  if(!isLoaded) {
+    return <Loading />;
+  }
 
   return (
     <ThemeProvider theme={theme}>
