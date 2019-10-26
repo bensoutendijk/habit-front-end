@@ -21,14 +21,14 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     height: '100%',
   },
   imageContainer: {
-    height: '100vh',
+    height: '600px',
     [theme.breakpoints.down('sm')]: {
       display: 'none',
     },
   },
   image: {
     borderRadius: '4px 0px 0px 4px',
-    height: '100vh',
+    height: '600px',
     width: '100%',
     objectFit: 'cover',
   },
@@ -71,7 +71,7 @@ function LogIn() {
       <Paper>
         <Grid className={classes.container} container>
           <Grid className={classes.imageContainer} item xs={6}>
-            <img className={classes.image} src="/assets/images/login.jpg" alt="" />
+            <img className={classes.image} src="/assets/images/login.svg" alt="" />
           </Grid>
           <Grid item xs={12} md={6}>
             <Grid className={classes.loginContainer} container direction="column" alignItems="stretch" spacing={4}>
