@@ -118,7 +118,7 @@ export default function Header() {
             <Grid container className={classes.toolbar}>
               <Grid item>
                 <NavLink
-                  to="/services"
+                  to="/projects"
                   className={classes.navButton}
                   activeClassName={classes.navButtonActive}
                 >

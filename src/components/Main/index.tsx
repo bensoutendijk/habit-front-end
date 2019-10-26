@@ -4,6 +4,9 @@ import LogOut from '../LogOut';
 import PageNotFound from '../PageNotFound';
 import LogIn from '../LogIn';
 import SignUp from '../SignUp';
+import Projects from '../Projects';
+import ProjectNew from '../Projects/ProjectNew';
+import ProjectView from '../Projects/ProjectView';
 import { AuthState } from '../../store/auth/types';
 import { AppState } from '../../store';
 import { useSelector } from 'react-redux';
@@ -42,6 +45,9 @@ const Main: React.FC = () => {
       <div className={classes.container}>
         {auth.fetched ? (
           <Switch>
+            <Route exact path="/projects" component={Projects} />
+            <Route exact path="/projects/new" component={ProjectNew} />
+            <Route path="/projects/:serviceId" component={ProjectView} />
             <Route exact path="/logout" component={LogOut} />
             <Redirect to="/projects" />
             <Route component={PageNotFound} />

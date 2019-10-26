@@ -4,10 +4,12 @@ import reduxThunk from 'redux-thunk';
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import { authReducer } from './auth/reducers';
+import { projectsReducer } from './projects/reducers';
 
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  projects: projectsReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
