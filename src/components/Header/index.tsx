@@ -90,8 +90,8 @@ export default function Header() {
                       to="/logout"
                       component={Link}
                       className={classes.authButton}
-                      color="primary"
-                      variant="outlined"
+                      color="secondary"
+                      variant="contained"
                     >
                         Log Out
                     </Button>
@@ -102,8 +102,8 @@ export default function Header() {
                       to="/login"
                       component={Link}
                       className={classes.authButton}
-                      color="primary"
-                      variant="outlined"
+                      color="secondary"
+                      variant="contained"
                     >
                         Log In
                     </Button>
