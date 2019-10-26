@@ -11,11 +11,11 @@ import { fetchAuth } from '../store/auth/actions';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#FF5F5F',
+      main: '#027368',
       contrastText: '#F2F2F2',
     },
     secondary: {
-      main: '#252A2B',
+      main: '#0D0D0D',
       light: '#B1B1B1',
       contrastText: '#F2F2F2',
     },
@@ -26,11 +26,6 @@ const theme = createMuiTheme({
   },
   overrides: {
     MuiPaper: {
-      root: {
-        color: '#020202',
-      },
-    },
-    MuiButton: {
       root: {
         color: '#020202',
       },
