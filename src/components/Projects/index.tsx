@@ -80,7 +80,7 @@ const Projects: React.FC = () => {
                   component={Link}
                   to="/projects/new"
                 >
-                  Add New Service
+                  Create New Project
                 </Button>
               </Grid>
             </Grid>

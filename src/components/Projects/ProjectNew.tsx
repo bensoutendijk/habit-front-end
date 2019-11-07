@@ -60,9 +60,14 @@ const ProjectNew: React.FC = () => {
           </Grid>
           <Grid item>
             <Grid container direction="column">
-              <ButtonBase disabled className={classes.serviceButtonBase}>
+              <ButtonBase to="/" component={Link} className={classes.serviceButtonBase}>
                 <Grid className={classes.service} item>
-                  <Typography variant="h6">New Documentation</Typography>
+                  <Typography variant="h6">New GUI Documentation Project</Typography>
+                </Grid>  
+              </ButtonBase>
+              <ButtonBase to="/" component={Link} className={classes.serviceButtonBase}>
+                <Grid className={classes.service} item>
+                  <Typography variant="h6">New API Documentation Project</Typography>
                 </Grid>  
               </ButtonBase>
             </Grid>

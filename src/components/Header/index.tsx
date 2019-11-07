@@ -69,7 +69,7 @@ export default function Header() {
             </Grid>
             <Grid item>
               <Grid container spacing={2}>
-                { auth.fetched ? (
+                {auth.fetched ? (
                   null
                 ) : (
                   <Grid item>
@@ -123,7 +123,7 @@ export default function Header() {
                   activeClassName={classes.navButtonActive}
                 >
                     <ButtonBase className={classes.navButtonBase}>
-                      <Typography variant="h6">Services</Typography>
+                      <Typography variant="h6">Projects</Typography>
                     </ButtonBase>
                 </NavLink>
               </Grid>

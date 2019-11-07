@@ -37,7 +37,7 @@ const ProjectView: React.FC<ServiceViewProps> = (props) => {
     }
 
     getProject(projectId);
-  }, [dispatch]);
+  }, [dispatch, projectId]);
 
   return (
     <div className={classes.root}>
