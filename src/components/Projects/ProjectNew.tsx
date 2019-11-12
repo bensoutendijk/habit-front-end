@@ -62,12 +62,7 @@ const ProjectNew: React.FC = () => {
             <Grid container direction="column">
               <ButtonBase to="/" component={Link} className={classes.serviceButtonBase}>
                 <Grid className={classes.service} item>
-                  <Typography variant="h6">New GUI Documentation Project</Typography>
-                </Grid>  
-              </ButtonBase>
-              <ButtonBase to="/" component={Link} className={classes.serviceButtonBase}>
-                <Grid className={classes.service} item>
-                  <Typography variant="h6">New API Documentation Project</Typography>
+                  <Typography variant="h6">Connect to Github Repo</Typography>
                 </Grid>  
               </ButtonBase>
             </Grid>

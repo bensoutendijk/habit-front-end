@@ -28,7 +28,14 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     [theme.breakpoints.down('sm')]: {
       justifyContent: 'center',
     },
-    zIndex: 1,
+    zIndex: 1000,
+  },
+  subnav: {
+    justifyContent: 'flex-start',
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
+    zIndex: 1000,
   },
   authButton: {
     [theme.breakpoints.down('sm')]: {
@@ -115,7 +122,20 @@ export default function Header() {
         </Toolbar>
         {auth.fetched ? (
           <Toolbar className="navigation" disableGutters>
-            <Grid container className={classes.toolbar}>
+            <Grid container className={classes.subnav}>
+
+              <Grid item>
+                <NavLink
+                  to="/dashboard"
+                  className={classes.navButton}
+                  activeClassName={classes.navButtonActive}
+                >
+                    <ButtonBase className={classes.navButtonBase}>
+                      <Typography variant="h6">Dashboard</Typography>
+                    </ButtonBase>
+                </NavLink>
+              </Grid>
+
               <Grid item>
                 <NavLink
                   to="/projects"
@@ -127,6 +147,7 @@ export default function Header() {
                     </ButtonBase>
                 </NavLink>
               </Grid>
+              
             </Grid>
           </Toolbar>
         ) : (
