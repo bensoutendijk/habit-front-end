@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Grid, makeStyles, createStyles, Theme, Typography, ButtonBase, Button, Paper } from '@material-ui/core';
@@ -38,6 +38,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 const ProjectNew: React.FC = () => {
   const classes = useStyles({});
 
+  const [github, setGithub] = useState(false);
+
   return (
     <div className={classes.root}>
       <Paper>
@@ -60,11 +62,19 @@ const ProjectNew: React.FC = () => {
           </Grid>
           <Grid item>
             <Grid container direction="column">
-              <ButtonBase to="/" component={Link} className={classes.serviceButtonBase}>
-                <Grid className={classes.service} item>
-                  <Typography variant="h6">Connect to Github Repo</Typography>
-                </Grid>  
-              </ButtonBase>
+              {github ? (
+                <ButtonBase to="/" component={Link} className={classes.serviceButtonBase}>
+                  <Grid className={classes.service} item>
+                    <Typography variant="h6">Docs From Repo</Typography>
+                  </Grid>  
+                </ButtonBase>
+              ) : (
+                <ButtonBase to="/" component={Link} className={classes.serviceButtonBase}>
+                  <Grid className={classes.service} item>
+                    <Typography variant="h6">Connect to Github</Typography>
+                  </Grid>  
+                </ButtonBase>
+              )}
             </Grid>
           </Grid>
         </Grid>
