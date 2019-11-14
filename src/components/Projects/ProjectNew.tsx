@@ -69,7 +69,7 @@ const ProjectNew: React.FC = () => {
                   </Grid>  
                 </ButtonBase>
               ) : (
-                <ButtonBase to="/" component={Link} className={classes.serviceButtonBase}>
+                <ButtonBase href="/api/auth/github/login" className={classes.serviceButtonBase}>
                   <Grid className={classes.service} item>
                     <Typography variant="h6">Connect to Github</Typography>
                   </Grid>  
