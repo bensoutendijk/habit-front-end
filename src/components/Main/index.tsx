@@ -12,6 +12,7 @@ import { AppState } from '../../store';
 import { useSelector } from 'react-redux';
 import { makeStyles, createStyles, Theme } from '@material-ui/core';
 import ServiceList from '../Services';
+import ServiceView from '../Services/ServiceView';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
@@ -49,8 +50,8 @@ const Main: React.FC = () => {
             <Route exact path="/projects" component={ProjectList} />
             <Route exact path="/projects/new" component={ProjectNew} />
             <Route exact path="/services" component={ServiceList} />
+            <Route path="/services/:provider/:username" component={ServiceView} />
             <Route exact path="/logout" component={LogOut} />
-            <Redirect to="/dashboard" />
             <Route component={PageNotFound} />
           </Switch>
         ) : (
