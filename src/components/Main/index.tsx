@@ -4,14 +4,14 @@ import LogOut from '../LogOut';
 import PageNotFound from '../PageNotFound';
 import LogIn from '../LogIn';
 import SignUp from '../SignUp';
-import Dashboard from '../Dashboard';
-import Projects from '../Projects';
+import ProjectList from '../Projects';
 import ProjectNew from '../Projects/ProjectNew';
 import ProjectView from '../Projects/ProjectView';
 import { AuthState } from '../../store/auth/types';
 import { AppState } from '../../store';
 import { useSelector } from 'react-redux';
 import { makeStyles, createStyles, Theme } from '@material-ui/core';
+import ServiceList from '../Services';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
@@ -46,10 +46,9 @@ const Main: React.FC = () => {
       <div className={classes.container}>
         {auth.fetched ? (
           <Switch>
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/projects" component={Projects} />
+            <Route exact path="/projects" component={ProjectList} />
             <Route exact path="/projects/new" component={ProjectNew} />
-            <Route path="/projects/:serviceId" component={ProjectView} />
+            <Route exact path="/services" component={ServiceList} />
             <Route exact path="/logout" component={LogOut} />
             <Redirect to="/dashboard" />
             <Route component={PageNotFound} />

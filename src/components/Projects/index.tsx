@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 import { AppState } from '../../store';
 
 import { Grid, makeStyles, createStyles, Theme, InputBase, Button, Typography, Paper } from '@material-ui/core';
@@ -20,31 +21,13 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     border: '2px solid #e2e2e2',
     borderRadius: theme.spacing(1),
   },
-  service: {
-    width: '100%',
-    display: 'flex',
+  noProjectList: {
+    alignItems: 'center',
     padding: theme.spacing(2),
-    
   },
-  serviceButtonBase: {
-    "&:hover": {
-      backgroundColor: '#c2c2c2'
-    },
-    '&:nth-child(even)': {
-      "&:hover": {
-        backgroundColor: '#c2c2c2'
-      },
-      backgroundColor: '#f2f2f2',
-    }
-  },
-  serviceImage: {
-    maxHeight: '50px',
-    padding: theme.spacing(2),
-    borderRadius: theme.spacing(1),
-  }
 }));
 
-const Projects: React.FC = () => {
+const ProjectList: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -55,6 +38,7 @@ const Projects: React.FC = () => {
       await dispatch(fetchProjects());
     }
     getUsers();
+    
   }, [dispatch]);
 
   return (
@@ -93,7 +77,7 @@ const Projects: React.FC = () => {
                 ))}
               </Grid>
             ) : (
-              <Grid container direction="column">
+              <Grid className={classes.noProjectList} container direction="column">
                 <Typography color="textSecondary" variant="h4">You haven't created any projects yet</Typography>
               </Grid>
             )}
@@ -104,4 +88,4 @@ const Projects: React.FC = () => {
   )
 }
 
-export default Projects;
+export default ProjectList;

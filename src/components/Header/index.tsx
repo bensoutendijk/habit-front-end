@@ -123,19 +123,6 @@ export default function Header() {
         {auth.fetched ? (
           <Toolbar className="navigation" disableGutters>
             <Grid container className={classes.subnav}>
-
-              <Grid item>
-                <NavLink
-                  to="/dashboard"
-                  className={classes.navButton}
-                  activeClassName={classes.navButtonActive}
-                >
-                    <ButtonBase className={classes.navButtonBase}>
-                      <Typography variant="h6">Dashboard</Typography>
-                    </ButtonBase>
-                </NavLink>
-              </Grid>
-
               <Grid item>
                 <NavLink
                   to="/projects"
@@ -144,6 +131,18 @@ export default function Header() {
                 >
                     <ButtonBase className={classes.navButtonBase}>
                       <Typography variant="h6">Projects</Typography>
+                    </ButtonBase>
+                </NavLink>
+              </Grid>
+
+              <Grid item>
+                <NavLink
+                  to="/services"
+                  className={classes.navButton}
+                  activeClassName={classes.navButtonActive}
+                >
+                    <ButtonBase className={classes.navButtonBase}>
+                      <Typography variant="h6">Services</Typography>
                     </ButtonBase>
                 </NavLink>
               </Grid>
