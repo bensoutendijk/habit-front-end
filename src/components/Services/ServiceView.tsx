@@ -2,16 +2,22 @@ import React, { useEffect } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Grid, makeStyles, createStyles, Theme, Typography, Button, Paper, Link as MuiLink, ListItem, List } from '@material-ui/core';
+import { Grid, makeStyles, createStyles, Theme, Paper } from '@material-ui/core';
 import { fetchService } from '../../store/services/actions';
 import { selectUserByUsername } from '../../selectors';
 import { IService } from '../../store/services/types';
+import ServiceSummary from './ServiceSummary';
+import Skeleton from '../Skeleton';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
     minHeight: '500px',
   },
-  streamHero: {
+  card: {
+    display: 'flex',
+    padding: theme.spacing(2)
+  },
+  serviceHero: {
     display: 'flex',
     padding: theme.spacing(4)
   },
@@ -49,63 +55,20 @@ const ServiceView: React.FC<ServiceViewProps> = (props) => {
         <Grid item>
           <Grid container spacing={4}>
             <Grid item md={8}>
-              <Paper className={classes.streamHero}>
-                <Grid container direction="column">
-                  <Grid item>
-                    <Grid container>
-                      <Grid item md={8}>
-                        <Grid container direction="column" spacing={2}>
-                          <Grid item>
-                            {service ? (
-                              <Typography variant="h6">{service.data.username}</Typography>
-                            ) : (
-                              <Typography variant="h6">...</Typography>
-                            )}
-                          </Grid>
-                          <Grid item>
-                              {service ? (
-                                <Typography>
-                                    <MuiLink target="_blank" href={`https://github.com/${service.data.username}`} >
-                                      {`https://github.com/${service.data.username}`}
-                                    </MuiLink>
-                                </Typography>
-                              ): (
-                                <Typography>...</Typography>
-                              )}
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      {/* <Grid item md={4}>
-                        {service ? (
-                          <ServicePreview serviceId={service._id} />
-                        ): (
-                          null
-                        )}
-                      </Grid> */}
-                    </Grid>
-                  </Grid>
-                  <Grid item>
-                    <Grid container spacing={2}>
-                      <Grid item>
-                        <Button variant="contained">Projects</Button>
-                      </Grid>
-                      <Grid item>
-                        <Button variant="contained">Settings</Button>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Paper>
+              <ServiceSummary service={service} />
             </Grid>
           </Grid>
         </Grid>
         <Grid item>
           <Grid container spacing={4}>
             <Grid item md={6}>
+              <Paper className={classes.card}>
+                <Skeleton height={200} />
+              </Paper>
             </Grid>
             <Grid item md={6}>
-              <Paper>
-
+              <Paper className={classes.card}>
+                <Skeleton height={200} />
               </Paper>
             </Grid>
           </Grid>
