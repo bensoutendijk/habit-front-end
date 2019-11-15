@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux';
 import { makeStyles, createStyles, Theme } from '@material-ui/core';
 import ServiceList from '../Services';
 import ServiceView from '../Services/ServiceView';
+import RepoView from '../Repos/RepoView';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
@@ -51,7 +52,8 @@ const Main: React.FC = () => {
             <Route exact path="/projects" component={ProjectList} />
             <Route exact path="/projects/new" component={ProjectNew} />
             <Route exact path="/services" component={ServiceList} />
-            <Route path="/services/:provider/:username" component={ServiceView} />
+            <Route exact path="/services/:provider/:username" component={ServiceView} />
+            <Route exact path="/services/:provider/:username/:reponame" component={RepoView} />
             <Route exact path="/logout" component={LogOut} />
             <Route component={PageNotFound} />
           </Switch>

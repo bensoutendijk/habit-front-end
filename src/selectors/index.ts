@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { AppState } from '../store';
+import { IService } from '../store/services/types';
 
 export const selectUserByUsername = (provider: string, username: string) => createSelector(
   (state: AppState) => state.services.byId,
