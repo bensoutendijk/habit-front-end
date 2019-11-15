@@ -16,6 +16,7 @@ import ServiceView from '../Services/ServiceView';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
+    height: 1600,
     flexGrow: 1,
     '&::before': {
       background: theme.palette.secondary.main,

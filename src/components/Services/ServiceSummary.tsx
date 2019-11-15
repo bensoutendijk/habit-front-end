@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Paper, Grid, Typography, Button, Link as MuiLink, makeStyles, createStyles, Theme } from '@material-ui/core';
 import { IService } from '../../store/services/types';
 import Skeleton from '../Skeleton';
+import { fetchRepos } from '../../store/repos/actions';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {

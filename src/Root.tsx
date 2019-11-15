@@ -10,9 +10,7 @@ const store = configureStore();
 function Root() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
         <App />
-      </BrowserRouter>
     </Provider>
   );
 }
