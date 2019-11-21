@@ -13,7 +13,6 @@ const RepoList: React.FC<RepoListProps> = (props) => {
     const repos = useSelector((state: AppState) => state.repos);
 
     const dispatch = useDispatch();
-
     useEffect(() => {
         const getRepos = async (service: IService) => {
           await dispatch(fetchRepos(service));
@@ -29,9 +28,9 @@ const RepoList: React.FC<RepoListProps> = (props) => {
                     {repos ? (
                         <List>
                             {repos.allIds
-                            .filter(id => repos.byId[id].name.match(search))
+                            .filter(id => repos.byId[id].name.toLowerCase().search(search.toLowerCase()) + 1)
                             .map((id) => (
-                                <ListItem button component={Link} to={`/${provider}/${username}/${repos.byId[id].name.toLowerCase()}`}>
+                                <ListItem button component={Link} to={`/services/${provider}/${username}/repos/${repos.byId[id].name.toLowerCase()}`}>
                                     {repos.byId[id].name}
                                 </ListItem>
                             ))}
@@ -49,7 +48,7 @@ const RepoList: React.FC<RepoListProps> = (props) => {
                     {repos ? (
                         <ul>
                             {repos.allIds
-                            .filter(id => repos.byId[id].name.match(search))
+                            .filter(id => repos.byId[id].name.toLowerCase().search(search.toLowerCase()) + 1)
                             .map((id) => (
                                 <li>
                                     {repos.byId[id].name}

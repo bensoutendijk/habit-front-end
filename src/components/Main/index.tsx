@@ -53,7 +53,7 @@ const Main: React.FC = () => {
             <Route exact path="/projects/new" component={ProjectNew} />
             <Route exact path="/services" component={ServiceList} />
             <Route exact path="/services/:provider/:username" component={ServiceView} />
-            <Route exact path="/services/:provider/:username/:reponame" component={RepoView} />
+            <Route exact path="/services/:provider/:username/repos/:reponame" component={RepoView} />
             <Route exact path="/logout" component={LogOut} />
             <Route component={PageNotFound} />
           </Switch>
