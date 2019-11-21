@@ -5,9 +5,11 @@ import { fetchRepos } from '../../store/repos/actions';
 import { AppState } from '../../store';
 import { List, ListItem } from '@material-ui/core';
 import { Link, RouteComponentProps } from 'react-router-dom';
+import { selectUserByUsername } from '../../selectors';
 
 const RepoList: React.FC<RepoListProps> = (props) => {
-    const { service, search, type } = props;
+    const { match: { params: { provider, username } }, search, type } = props;
+    const service: IService = useSelector(selectUserByUsername(provider, username))[0];
     const repos = useSelector((state: AppState) => state.repos);
 
     const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const RepoList: React.FC<RepoListProps> = (props) => {
                             {repos.allIds
                             .filter(id => repos.byId[id].name.match(search))
                             .map((id) => (
-                                <ListItem button component={Link} to={`/${repos.byId[id].name.toLowerCase()}`}>
+                                <ListItem button component={Link} to={`/${provider}/${username}/${repos.byId[id].name.toLowerCase()}`}>
                                     {repos.byId[id].name}
                                 </ListItem>
                             ))}
@@ -63,8 +65,7 @@ const RepoList: React.FC<RepoListProps> = (props) => {
     }
 }
 
-interface RepoListProps {
-    service: IService
+interface RepoListProps extends RouteComponentProps<{provider: string; username: string}> {
     search: string
     type: 'default' | 'buttons' | undefined
 }

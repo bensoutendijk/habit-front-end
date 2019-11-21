@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { Route } from 'react-router-dom';
 import { Grid, makeStyles, createStyles, Theme, Paper, InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/SearchOutlined'
 
@@ -91,7 +91,7 @@ const ServiceView: React.FC<ServiceViewProps> = (props) => {
                   <Skeleton height={32} />
                 )}
                 {service ? (
-                  <RepoList service={service} search={search} type={'buttons'}/>
+                    <Route render={(props) => <RepoList {...props} search={search} type={'buttons'}/>} />
                 ) : (
                   <Skeleton height={200} />
                 )}
