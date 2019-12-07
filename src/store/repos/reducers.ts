@@ -41,6 +41,7 @@ export function reposReducer(
           ...state.allIds,
           ...action.payload
           .map((repo: IRepo) => repo.id)
+          .filter((id: string) => !state.allIds.includes(id))
         ]
       };
     case REJECT_REPOS:
