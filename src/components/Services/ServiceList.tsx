@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core';
 
-import Loading from '../Loading';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { AppState } from '../../store';
-import { fetchProjects } from '../../store/projects/actions';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
