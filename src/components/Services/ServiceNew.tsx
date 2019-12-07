@@ -4,35 +4,35 @@ import { Link } from 'react-router-dom';
 import { Grid, makeStyles, createStyles, Theme, Typography, ButtonBase, Button, Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
-  root: {
-    minHeight: '500px',
-  },
-  header: {
-    padding: theme.spacing(4)
-  },
-  service: {
-    display: 'flex',
-    flexGrow: 1,
-    alignItems: 'center',
-    padding: theme.spacing(2),
-    
-  },
-  serviceButtonBase: {
-    "&:hover": {
-      backgroundColor: '#c2c2c2'
+    root: {
+        minHeight: '500px',
     },
-    '&:nth-child(even)': {
-      "&:hover": {
-        backgroundColor: '#c2c2c2'
-      },
-      backgroundColor: '#f2f2f2',
+    header: {
+        padding: theme.spacing(4)
+    },
+    service: {
+        display: 'flex',
+        flexGrow: 1,
+        alignItems: 'center',
+        padding: theme.spacing(2),
+        
+    },
+    serviceButtonBase: {
+        "&:hover": {
+            backgroundColor: '#c2c2c2'
+        },
+        '&:nth-child(even)': {
+            "&:hover": {
+                backgroundColor: '#c2c2c2'
+            },
+            backgroundColor: '#f2f2f2',
+        }
+    },
+    serviceImage: {
+        maxHeight: '50px',
+        padding: theme.spacing(2),
+        borderRadius: theme.spacing(1),
     }
-  },
-  serviceImage: {
-    maxHeight: '50px',
-    padding: theme.spacing(2),
-    borderRadius: theme.spacing(1),
-  }
 }));
 
 const ServiceNew: React.FC = () => {

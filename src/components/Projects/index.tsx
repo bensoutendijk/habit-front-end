@@ -9,36 +9,34 @@ import ProjectList from './ProjectList';
 import { useDispatch } from 'react-redux';
 import { fetchProjects } from '../../store/projects/actions';
 import ProjectNew from './ProjectNew';
+import ProjectView from './ProjectView';
 
 const Projects: React.FC = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  const [ready, setReady] = useState(false);
+    const [ready, setReady] = useState(false);
 
-  useEffect(() => {
-    const getProjects = async () => {
-      await dispatch(fetchProjects());
+    useEffect(() => {
+        const getProjects = async () => {
+            await dispatch(fetchProjects());
+        }
+        getProjects()
+            .then(() => setReady(true))
+    }, [dispatch]);
+
+    if (!ready) {
+        return (
+            <Loading />
+        )
     }
-    getProjects()
-    .then(() => setReady(true))
-  }, [dispatch]);
 
-  if (!ready) {
     return (
-      <Loading />
+        <Switch>
+            <Route path="/projects/:provider/:username/:reponame" component={ProjectView}/>
+            <Route path="/projects/new" component={ProjectNew} />
+            <Route component={ProjectList} />
+        </Switch>
     )
-  }
-
-  return (
-    <Switch>
-      <Route path="/projects/new">
-        <ProjectNew />
-      </Route>
-      <Route>
-        <ProjectList />
-      </Route>
-    </Switch>
-  )
 }
 
 export default Projects;

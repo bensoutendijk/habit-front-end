@@ -10,21 +10,21 @@ import { AppState } from '../../store';
 import { fetchServices } from '../../store/services/actions';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
-  root: {
+    root: {
 
-  },
+    },
 }));
 
 const ProjectNew: React.FC = () => {
-  const classes = useStyles({});
+    const classes = useStyles({});
 
-  return (
-    <div className={classes.root}>
-      New Project <br/>
-      Create from Repository <br/>
-      <Services />
-    </div>
-  )
+    return (
+        <div className={classes.root}>
+            New Project <br/>
+            Create from Repository <br/>
+            <Services />
+        </div>
+    )
 }
 
 export default ProjectNew;

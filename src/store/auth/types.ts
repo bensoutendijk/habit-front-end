@@ -7,41 +7,41 @@ export type AuthPermission = 'admin' | 'tester' | 'default'
 export type AuthService = 'mixer' | 'twitch' | 'instagram' | 'facebook' | 'twitter'
 
 export interface AuthState {
-  fetched: boolean;
-  fetching: boolean;
-  user?: ILocalUser;
-  error?: AuthError
+    fetched: boolean;
+    fetching: boolean;
+    user?: LocalUser;
+    error?: AuthError;
 }
 
-export interface ILocalUser {
-  _id: any;
-  email: string;
-  permissions: AuthPermission[];
-  services: AuthService[];
+export interface LocalUser {
+    _id: any;
+    email: string;
+    permissions: AuthPermission[];
+    services: AuthService[];
 }
 
-export interface IAuthCredentials {
-  email: string;
-  password: string;
-  passwordConfirmation?: string;
+export interface AuthCredentials {
+    email: string;
+    password: string;
+    passwordConfirmation?: string;
 }
 
 interface RequestAuth {
-  type: typeof REQUEST_AUTH;
+    type: typeof REQUEST_AUTH;
 }
 
 interface RecieveAuth {
-  type: typeof RECIEVE_AUTH;
-  payload: ILocalUser;
+    type: typeof RECIEVE_AUTH;
+    payload: LocalUser;
 }
 
 interface RejectAuth {
-  type: typeof REJECT_AUTH;
-  payload: AuthError
+    type: typeof REJECT_AUTH;
+    payload: AuthError;
 }
 
 export type AuthActionTypes = (
-  RequestAuth |
-  RecieveAuth |
-  RejectAuth
+    RequestAuth |
+    RecieveAuth |
+    RejectAuth
 )

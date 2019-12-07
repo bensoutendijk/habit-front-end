@@ -7,21 +7,22 @@ import Projects from '../Projects';
 
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
-  root: {
-  },
+    root: {
+
+    },
 }));
 
 const Dashboard: React.FC = () => {
-  const classes = useStyles();
+    const classes = useStyles();
 
-  return (
-    <div className={classes.root}>
-      Dashboard
-      <div>
-        <Projects />
-      </div>
-    </div>
-  )
+    return (
+        <div className={classes.root}>
+            Dashboard
+            <div>
+                <Projects />
+            </div>
+        </div>
+    )
 }
 
 export default Dashboard;

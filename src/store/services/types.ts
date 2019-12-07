@@ -4,41 +4,41 @@ export const REJECT_SERVICES = 'REJECT_SERVICES';
 
 export type UserId = string;
 
-export interface IService {
-  _id: UserId;
-  data: IServiceData;
-  provider: string;
+export interface Service {
+    _id: UserId;
+    data: ServiceData;
+    provider: string;
 }
 
-export interface IServiceData {
-  username: string;
-  userid: number;
+export interface ServiceData {
+    username: string;
+    userid: number;
 }
 
 export interface ServicesState {
-  fetched: boolean
-  fetching: boolean
-  byId: {
-    [key: string]: IService
-  }
-  allIds: UserId[]
+    fetched: boolean;
+    fetching: boolean;
+    byId: {
+        [key: string]: Service;
+    };
+    allIds: UserId[];
 }
 
 interface RequestServices {
-  type: typeof REQUEST_SERVICES
+    type: typeof REQUEST_SERVICES;
 }
 
 interface RecieveServices {
-  type: typeof RECIEVE_SERVICES
-  payload: IService[]
+    type: typeof RECIEVE_SERVICES;
+    payload: Service[];
 }
 
 interface RejectServices {
-  type: typeof REJECT_SERVICES
+    type: typeof REJECT_SERVICES;
 }
 
 export type ServicesActionTypes = (
-  RequestServices |
-  RecieveServices |
-  RejectServices 
+    RequestServices |
+    RecieveServices |
+    RejectServices 
 )

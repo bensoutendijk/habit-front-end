@@ -10,22 +10,22 @@ import { reposReducer } from './repos/reducers';
 
 
 const rootReducer = combineReducers({
-  auth: authReducer,
-  projects: projectsReducer,
-  services: servicesReducer,
-  repos: reposReducer,
+    auth: authReducer,
+    projects: projectsReducer,
+    services: servicesReducer,
+    repos: reposReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
 
 export default function configureStore() {
-  const middlewares = [reduxThunk, reduxLogger];
-  const middleWareEnhancer = applyMiddleware(...middlewares);
+    const middlewares = [reduxThunk, reduxLogger];
+    const middleWareEnhancer = applyMiddleware(...middlewares);
 
-  const store = createStore(
-    rootReducer,
-    composeWithDevTools(middleWareEnhancer)
-  );
+    const store = createStore(
+        rootReducer,
+        composeWithDevTools(middleWareEnhancer)
+    );
 
-  return store;
+    return store;
 }

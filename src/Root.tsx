@@ -8,11 +8,11 @@ import App from './components/App';
 const store = configureStore();
 
 function Root() {
-  return (
-    <Provider store={store}>
-        <App />
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <App />
+        </Provider>
+    );
 }
 
 export default Root;

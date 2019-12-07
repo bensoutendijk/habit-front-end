@@ -7,32 +7,32 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../store';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
-  root: {
+    root: {
 
-  },
+    },
 }));
 
 const ServiceList: React.FC = () => {
-  const classes = useStyles({});
-  const services = useSelector((state: AppState) => state.services);
+    const classes = useStyles({});
+    const services = useSelector((state: AppState) => state.services);
 
-  return (
-    <div className={classes.root}>
-      {services.fetched ? (
-        <ul>
-          {services.allIds.map(id => (
-              <li key={id}>
-                <Link to={`/services/${services.byId[id].provider}/${services.byId[id].data.username}`}>
-                  {services.byId[id].data.username}
-                </Link>
-              </li>
-          ))}
-        </ul>
-      ) : (
-        <a href="/api/auth/github/login">Connect Github Account</a>
-      )}
-    </div>
-  )
+    return (
+        <div className={classes.root}>
+            {services.fetched ? (
+                <ul>
+                    {services.allIds.map(id => (
+                        <li key={id}>
+                            <Link to={`/services/${services.byId[id].provider}/${services.byId[id].data.username}`}>
+                                {services.byId[id].data.username}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <a href="/api/auth/github/login">Connect Github Account</a>
+            )}
+        </div>
+    )
 }
 
 export default ServiceList;

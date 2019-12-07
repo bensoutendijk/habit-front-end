@@ -18,74 +18,74 @@ import { fetchAuth } from '../store/auth/actions';
 import { AuthState } from '../store/auth/types';
 
 const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#027368',
-      contrastText: 'black',
+    palette: {
+        primary: {
+            main: '#027368',
+            contrastText: 'black',
+        },
+        secondary: {
+            main: '#0D0D0D',
+            light: '#B1B1B1',
+            contrastText: '#F2F2F2',
+        },
+        text: {
+            primary: '#020202',
+            secondary: '#b2b2b2',
+        },
     },
-    secondary: {
-      main: '#0D0D0D',
-      light: '#B1B1B1',
-      contrastText: '#F2F2F2',
+    overrides: {
+        MuiPaper: {
+            root: {
+                color: '#020202',
+            },
+        },
     },
-    text: {
-      primary: '#020202',
-      secondary: '#b2b2b2',
-    },
-  },
-  overrides: {
-    MuiPaper: {
-      root: {
-        color: '#020202',
-      },
-    },
-  },
 });
 
 function App() {
-  const dispatch = useDispatch();
-  const auth: AuthState = useSelector((state: AppState) => state.auth);
+    const dispatch = useDispatch();
+    const auth: AuthState = useSelector((state: AppState) => state.auth);
 
-  const [ready, setReady] = useState(false);
+    const [ready, setReady] = useState(false);
 
-  useEffect(() => {
-    const getAuth = async () => {
-      await dispatch(fetchAuth());
+    useEffect(() => {
+        const getAuth = async () => {
+            await dispatch(fetchAuth());
+        }
+
+        getAuth()
+            .then(() => setReady(true));
+        
+    }, [dispatch]);
+
+    if(!ready) {
+        return <Loading />;
     }
 
-    getAuth()
-    .then(() => setReady(true));
-    
-  }, [dispatch]);
-
-  if(!ready) {
-    return <Loading />;
-  }
-
-  return (
-    <ThemeProvider theme={theme}>
-      <Header />
-      <main>
-        {auth.fetched ? (
-          <Switch>
-            <Route exact path="/" component={Dashboard} />
-            {/* <Route exact path="/projects" component={ProjectList} /> */}
-            <Route path="/projects" component={Projects} />
-            <Route path="/services" component={Services} />
-            {/* <Route exact path="/services/:provider/:username/repos/:reponame" component={RepoView} /> */}
-            {/* <Route exact path="/logout" component={LogOut} /> */}
-            {/* <Redirect to="/" /> */}
-          </Switch>
-        ) : (
-          <Switch>
-            <Route exact path="/login" component={LogIn} />
-            <Route exact path="/signup" component={SignUp} />
-            <Redirect to="/login" />
-          </Switch>
-        )}
-      </main>
-    </ThemeProvider>
-  )
+    return (
+        <ThemeProvider theme={theme}>
+            <Header />
+            <main>
+                {auth.fetched ? (
+                    <Switch>
+                        <Route exact path="/" component={Dashboard} />
+                        {/* <Route exact path="/projects" component={ProjectList} /> */}
+                        <Route path="/projects" component={Projects} />
+                        <Route path="/services" component={Services} />
+                        {/* <Route exact path="/services/:provider/:username/repos/:reponame" component={RepoView} /> */}
+                        {/* <Route exact path="/logout" component={LogOut} /> */}
+                        {/* <Redirect to="/" /> */}
+                    </Switch>
+                ) : (
+                    <Switch>
+                        <Route exact path="/login" component={LogIn} />
+                        <Route exact path="/signup" component={SignUp} />
+                        <Redirect to="/login" />
+                    </Switch>
+                )}
+            </main>
+        </ThemeProvider>
+    )
 }
 
 export default App;

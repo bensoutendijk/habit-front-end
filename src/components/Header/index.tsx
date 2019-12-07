@@ -9,118 +9,118 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../store';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
-  root: {
-    flexGrow: 1,
-  },
-  container: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    maxWidth: '1200px',
-    position  : 'relative',
-    width: 'auto',
-  },
-  title: {
-    textDecoration: 'none',
-    color: theme.palette.primary.contrastText,
-  },
-  toolbar: {
-    justifyContent: 'space-between',
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: 'center',
+    root: {
+        flexGrow: 1,
     },
-    zIndex: 1000,
-  },
-  subnav: {
-    justifyContent: 'flex-start',
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: 'center',
+    container: {
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        maxWidth: '1200px',
+        position  : 'relative',
+        width: 'auto',
     },
-    zIndex: 1000,
-  },
-  authButton: {
-    [theme.breakpoints.down('sm')]: {
-      display: 'none',
+    title: {
+        textDecoration: 'none',
+        color: theme.palette.primary.contrastText,
     },
-  },
-  logoutButtonLabel: {
-    color: theme.palette.primary.contrastText,
-  },
-  navButton: {
-    textDecoration: 'none',
-    color: 'grey'
-  },
-  navButtonBase: {
-    padding: theme.spacing(1),
-    borderRadius: theme.spacing(1)
-  },
-  navButtonActive: {
-    color: theme.palette.primary.contrastText
-  }
+    toolbar: {
+        justifyContent: 'space-between',
+        [theme.breakpoints.down('sm')]: {
+            justifyContent: 'center',
+        },
+        zIndex: 1000,
+    },
+    subnav: {
+        justifyContent: 'flex-start',
+        [theme.breakpoints.down('sm')]: {
+            justifyContent: 'center',
+        },
+        zIndex: 1000,
+    },
+    authButton: {
+        [theme.breakpoints.down('sm')]: {
+            display: 'none',
+        },
+    },
+    logoutButtonLabel: {
+        color: theme.palette.primary.contrastText,
+    },
+    navButton: {
+        textDecoration: 'none',
+        color: 'grey'
+    },
+    navButtonBase: {
+        padding: theme.spacing(1),
+        borderRadius: theme.spacing(1)
+    },
+    navButtonActive: {
+        color: theme.palette.primary.contrastText
+    }
 }));
 
 export default function Header() {
-  const classes = useStyles();
-  const auth = useSelector((state: AppState) => state.auth);
+    const classes = useStyles();
+    const auth = useSelector((state: AppState) => state.auth);
 
-  return (
-    <header className={classes.root}>
-      <div className={classes.container}>
-        <Toolbar disableGutters>
-          <Grid container className={classes.toolbar}>
-            <Grid item>
-              <Link className={classes.navButton} to="/">
-                <Typography className={classes.title} variant="h6">
-                  Habit
-                </Typography>
-              </Link>
-            </Grid>
-            <Grid item>
-              <Grid container spacing={2}>
-                {auth.fetched ? (
-                  null
-                ) : (
-                  <Grid item>
-                    <Button
-                      to="/signup"
-                      component={Link}
-                      className={classes.authButton}
-                      color="primary"
-                      variant="contained"
-                    >
-                        Create an account
-                    </Button>
-                  </Grid>
-                )}
-                {auth.fetched ? (
-                  <Grid item>
-                    <Button
-                      to="/logout"
-                      component={Link}
-                      className={classes.authButton}
-                      color="secondary"
-                      variant="contained"
-                    >
-                        Log Out
-                    </Button>
-                  </Grid>
-                ) : (
-                  <Grid item>
-                    <Button
-                      to="/login"
-                      component={Link}
-                      className={classes.authButton}
-                      color="secondary"
-                      variant="contained"
-                    >
-                        Log In
-                    </Button>
-                  </Grid>
-                )}
-              </Grid>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </div>
-    </header>
-  );
+    return (
+        <header className={classes.root}>
+            <div className={classes.container}>
+                <Toolbar disableGutters>
+                    <Grid container className={classes.toolbar}>
+                        <Grid item>
+                            <Link className={classes.navButton} to="/">
+                                <Typography className={classes.title} variant="h6">
+                                Habit
+                                </Typography>
+                            </Link>
+                        </Grid>
+                        <Grid item>
+                            <Grid container spacing={2}>
+                                {auth.fetched ? (
+                                    null
+                                ) : (
+                                    <Grid item>
+                                        <Button
+                                            to="/signup"
+                                            component={Link}
+                                            className={classes.authButton}
+                                            color="primary"
+                                            variant="contained"
+                                        >
+                                            Create an account
+                                        </Button>
+                                    </Grid>
+                                )}
+                                {auth.fetched ? (
+                                    <Grid item>
+                                        <Button
+                                            to="/logout"
+                                            component={Link}
+                                            className={classes.authButton}
+                                            color="secondary"
+                                            variant="contained"
+                                        >
+                                            Log Out
+                                        </Button>
+                                    </Grid>
+                                ) : (
+                                    <Grid item>
+                                        <Button
+                                            to="/login"
+                                            component={Link}
+                                            className={classes.authButton}
+                                            color="secondary"
+                                            variant="contained"
+                                        >
+                                        Log In
+                                        </Button>
+                                    </Grid>
+                                )}
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Toolbar>
+            </div>
+        </header>
+    );
 }

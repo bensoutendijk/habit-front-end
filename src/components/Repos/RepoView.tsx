@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
 }));
 
-const ServiceView: React.FC<ServiceViewProps> = ({ match }) => {
+const RepoView: React.FC<ServiceViewProps> = ({ match }) => {
     const { params: { provider, username } } = match;
     const classes = useStyles({});
     const service = useSelector(selectService(provider, username));
@@ -36,4 +36,4 @@ interface ServiceViewProps extends RouteComponentProps<MatchProps> {
   
 }
 
-export default ServiceView;
+export default RepoView;
