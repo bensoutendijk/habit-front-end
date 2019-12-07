@@ -1,72 +1,49 @@
-import React, { useEffect } from 'react';
-import { IService } from '../../store/services/types';
+import React, { useState, useEffect } from 'react';
+import { Switch, Route, RouteComponentProps } from 'react-router-dom';
+
+import Loading from '../Loading';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { selectService } from '../../selectors';
+import { IService } from '../../store/services/types';
 import { fetchRepos } from '../../store/repos/actions';
-import { AppState } from '../../store';
-import { List, ListItem } from '@material-ui/core';
-import { Link, RouteComponentProps } from 'react-router-dom';
-import { selectUserByUsername } from '../../selectors';
 
-const RepoList: React.FC<RepoListProps> = (props) => {
-    const { match: { params: { provider, username } }, search, type } = props;
-    const service: IService = useSelector(selectUserByUsername(provider, username))[0];
-    const repos = useSelector((state: AppState) => state.repos);
-
+const Repos: React.FC<ReposProps> = ({ match }) => {
+  const { params: { provider, username } } = match;
     const dispatch = useDispatch();
+    const service: IService = useSelector(selectService(provider, username));
+    
+    const [ready, setReady] = useState(false);
+
     useEffect(() => {
         const getRepos = async (service: IService) => {
           await dispatch(fetchRepos(service));
         }
     
-        getRepos(service);
+        getRepos(service)
+        .then(() => setReady(true));
     }, [dispatch, service]);
-
-    switch (type) {
-        case 'buttons': {
-            return (
-                <div>
-                    {repos ? (
-                        <List>
-                            {repos.allIds
-                            .filter(id => repos.byId[id].name.toLowerCase().search(search.toLowerCase()) + 1)
-                            .map((id) => (
-                                <ListItem button component={Link} to={`/services/${provider}/${username}/repos/${repos.byId[id].name.toLowerCase()}`}>
-                                    {repos.byId[id].name}
-                                </ListItem>
-                            ))}
-                        </List>
-                    ) : (
-                        null
-                    )}
-                </div>
-            )
-        }
-        
-        default: {
-            return (
-                <div>
-                    {repos ? (
-                        <ul>
-                            {repos.allIds
-                            .filter(id => repos.byId[id].name.toLowerCase().search(search.toLowerCase()) + 1)
-                            .map((id) => (
-                                <li>
-                                    {repos.byId[id].name}
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        null
-                    )}
-                </div>
-            )
-        }
+  
+    if (!ready) {
+      return (
+        <Loading />
+      )
     }
+
+    return (
+        <div>
+            Repos
+        </div>
+    )
 }
 
-interface RepoListProps extends RouteComponentProps<{provider: string; username: string}> {
-    search: string
-    type: 'default' | 'buttons' | undefined
+interface MatchProps {
+    username: string,
+    provider: string,
 }
 
-export default RepoList;
+interface ReposProps extends RouteComponentProps<MatchProps> {
+
+}
+
+export default Repos;

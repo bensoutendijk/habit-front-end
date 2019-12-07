@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { AppState } from '../store';
 import { IService } from '../store/services/types';
 
-export const selectUserByUsername = (provider: string, username: string) => createSelector(
+export const selectService = (provider: string, username: string) => createSelector(
   (state: AppState) => state.services.byId,
   services => (
     Object.keys(services)
@@ -10,6 +10,6 @@ export const selectUserByUsername = (provider: string, username: string) => crea
     .filter(user => (
       user.provider.toLowerCase() === provider.toLowerCase() &&
       user.data.username.toLowerCase() === username.toLowerCase()
-    ))
+    ))[0]
   ),
 );
