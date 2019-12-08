@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Loading from '../Loading';
 import ProjectList from './ProjectList';
 import ProjectNew from './ProjectNew';
-import ProjectView from './ProjectView';
+import ProjectSettings from './ProjectSettings';
 
 import { useDispatch } from 'react-redux';
 import { fetchProjects } from '../../store/projects/actions';
@@ -31,7 +31,7 @@ const Projects: React.FC = () => {
     return (
         <Switch>
             <Route path="/projects/new" component={ProjectNew} />
-            <Route exact path="/projects/:provider/:username/:reponame" component={ProjectView} />
+            <Route exact path="/projects/:provider/:username/:reponame" component={ProjectSettings} />
             <Route component={ProjectList} />
         </Switch>
     )

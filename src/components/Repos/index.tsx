@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import Loading from '../Loading';
 import RepoList from './RepoList';
-import RepoView from './RepoView';
+import RepoSettings from './RepoSettings';
 
 import { useDispatch } from 'react-redux';
 import { fetchRepos } from '../../store/repos/actions';
@@ -29,7 +29,7 @@ const Repos: React.FC = () => {
 
     return (
         <Switch>
-            <Route exact path="/projects/:provider/:username/:reponame" component={RepoView} />
+            <Route exact path="/projects/:provider/:username/:reponame" component={RepoSettings} />
             <Route component={RepoList} />
         </Switch>
     )
