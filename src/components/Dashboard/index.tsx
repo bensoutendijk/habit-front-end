@@ -18,11 +18,9 @@ const Dashboard: React.FC = () => {
 
     return (
         <div className={classes.root}>
-            Dashboard
+            <h3>Dashboard</h3>
             <div>
-                Projects List
                 <Projects />
-                Repo List
                 <Repos />
             </div>
         </div>

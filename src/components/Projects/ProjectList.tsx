@@ -22,6 +22,7 @@ const ProjectList: React.FC = () => {
     
     return (
         <div className={classes.root}>
+            <h4>Project List</h4>
             {projects.allIds.length && repos.allIds.length ? (
                 <ul>
                     {projects.allIds.map((id) => {
