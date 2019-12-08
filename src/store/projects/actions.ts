@@ -39,7 +39,6 @@ export const createProject = (repo: Repo): ThunkAction<void, AppState, null, Pro
         const { data } = await axios.post('/api/projects', project);
         dispatch(recieveProjects(data))
     } catch (error) {
-        const { data } = error.response;
         dispatch(rejectProjects());
     }
 }

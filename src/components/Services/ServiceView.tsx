@@ -6,7 +6,6 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core';
 import Repos from '../Repos';
 
 import { useSelector } from 'react-redux';
-import { AppState } from '../../store';
 import { selectService } from '../../selectors';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({

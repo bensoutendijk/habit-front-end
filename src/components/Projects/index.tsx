@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { makeStyles, createStyles, Theme } from '@material-ui/core';
-
 import Loading from '../Loading';
 import ProjectList from './ProjectList';
 import ProjectNew from './ProjectNew';
 import ProjectView from './ProjectView';
-import Services from '../Services';
 
 import { useDispatch } from 'react-redux';
 import { fetchProjects } from '../../store/projects/actions';

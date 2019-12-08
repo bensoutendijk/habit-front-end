@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 import Loading from '../Loading';
 import ServiceList from './ServiceList';
 import ServiceView from './ServiceView';
-import Repos from '../Repos';
 
 import { useDispatch } from 'react-redux';
 import { fetchServices } from '../../store/services/actions';

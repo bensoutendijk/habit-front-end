@@ -8,7 +8,6 @@ import {
 } from './types';
 import { ThunkAction } from 'redux-thunk';
 import { AppState } from '..';
-import { Service } from '../services/types';
 
 export function requestRepos(): ReposActionTypes {
     return {
