@@ -3,13 +3,9 @@ import { RouteComponentProps, Link } from 'react-router-dom';
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core';
 
-import Loading from '../Loading';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { selectRepo } from '../../selectors';
 import { createProject } from '../../store/projects/actions';
-import { fetchRepoDetails } from '../../store/repos/actions';
-import { Repo } from '../../store/repos/types';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {

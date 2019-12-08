@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Loading from '../Loading';
 import ProjectList from './ProjectList';
 import ProjectNew from './ProjectNew';
 import ProjectView from './ProjectView';

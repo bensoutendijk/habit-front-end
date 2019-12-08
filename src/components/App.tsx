@@ -4,7 +4,6 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import Loading from './Loading';
 import Header from './Header';
 import Dashboard from './Dashboard';
 import LogIn from './LogIn';

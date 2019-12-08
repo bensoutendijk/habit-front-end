@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
-import Loading from '../Loading';
 import RepoList from './RepoList';
 import RepoSettings from './RepoSettings';
 import RepoView from './RepoView';
