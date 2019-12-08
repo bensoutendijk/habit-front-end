@@ -34,9 +34,7 @@ const RepoSettings: React.FC<RepoSettingsProps> = ({ match }) => {
     }, [dispatch]);
 
     if (!projectReady) {
-        return (
-            <Loading />
-        )
+        return null;
     }
 
     return (

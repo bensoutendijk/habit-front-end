@@ -59,7 +59,7 @@ function App() {
     }, [dispatch]);
 
     if(!ready) {
-        return <Loading />;
+        return null;
     }
 
     return (

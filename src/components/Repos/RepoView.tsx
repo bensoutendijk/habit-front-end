@@ -34,9 +34,7 @@ const RepoView: React.FC<RepoViewProps> = ({ match }) => {
     }, [dispatch]);
 
     if (!projectReady) {
-        return (
-            <Loading />
-        )
+        return null;
     }
 
     return (

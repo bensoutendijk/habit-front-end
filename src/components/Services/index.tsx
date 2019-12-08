@@ -22,9 +22,7 @@ const Services: React.FC = () => {
     }, [dispatch]);
   
     if (!ready) {
-        return (
-            <Loading />
-        )
+        return null;
     }
 
     return (
