@@ -4,6 +4,7 @@ import { Link, Route } from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core';
 
 import Projects from '../Projects';
+import Repos from '../Repos';
 
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -19,7 +20,10 @@ const Dashboard: React.FC = () => {
         <div className={classes.root}>
             Dashboard
             <div>
+                Projects List
                 <Projects />
+                Repo List
+                <Repos />
             </div>
         </div>
     )

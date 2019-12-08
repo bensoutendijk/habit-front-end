@@ -1,5 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+
+import Repos from '../Repos';
 
 import {makeStyles, createStyles, Theme } from '@material-ui/core';
 
@@ -14,7 +15,7 @@ const ProjectView: React.FC = () => {
 
     return (
         <div className={classes.root}>
-            ProjectView
+            <Repos />
         </div>
     )
 }

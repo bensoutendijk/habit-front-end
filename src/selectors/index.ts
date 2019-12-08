@@ -13,3 +13,14 @@ export const selectService = (provider: string, username: string) => createSelec
             ))[0]
     ),
 );
+
+export const selectRepo = (reponame: string) => createSelector(
+    (state: AppState) => state.repos.byId,
+    repos => (
+        Object.keys(repos)
+            .map(key => (repos[key]))
+            .filter(repo => (
+                repo.data.name === reponame
+            ))[0]
+    ),
+);

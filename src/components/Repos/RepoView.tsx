@@ -1,13 +1,15 @@
-import React from 'react';
-import { RouteComponentProps, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core';
 
-import Repos from '../Repos';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectRepo } from '../../selectors';
 import { AppState } from '../../store';
-import { selectService } from '../../selectors';
+import { createProject } from '../../store/projects/actions';
+import { fetchRepoDetails } from '../../store/repos/actions';
+import Loading from '../Loading';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
@@ -16,13 +18,53 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 const RepoView: React.FC<ServiceViewProps> = ({ match }) => {
-    const { params: { provider, username } } = match;
+    const { params: { reponame } } = match;
     const classes = useStyles({});
-    const service = useSelector(selectService(provider, username));
+    const dispatch = useDispatch();
+    const repo = useSelector(selectRepo(reponame));
+    const [repoReady, setRepoReady] = useState(false);
+    const [projectReady, setProjectReady] = useState(false);
+    
+    useEffect(() => {
+        const postProject = async () => {
+            await dispatch(createProject(repo));
+        }
+    
+        postProject()
+            .then(() => setProjectReady(true));
+    }, [dispatch]);
+
+    useEffect(() => {
+        const getRepoDetails = async () => {
+            await dispatch(fetchRepoDetails(repo));
+        }
+    
+        getRepoDetails()
+            .then(() => setRepoReady(true));
+    }, [dispatch]);
+
+    if (!projectReady || !repoReady) {
+        return (
+            <Loading />
+        )
+    }
+
     return (
         <div className={classes.root}>
-            {service.data.username}
-            <Route component={Repos} />
+            {repo ? (
+                <div>
+                    {repo.data.name} <br/>
+                    <ul>
+                        {repo.details.branches.map(branch => (
+                            <li key={branch.name}>
+                                {branch.name}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ) : (
+                null
+            )}
         </div>
     )
 }
@@ -30,6 +72,7 @@ const RepoView: React.FC<ServiceViewProps> = ({ match }) => {
 interface MatchProps {
     username: string;
     provider: string;
+    reponame: string;
 }
 
 interface ServiceViewProps extends RouteComponentProps<MatchProps> {

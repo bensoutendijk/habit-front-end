@@ -24,8 +24,8 @@ const RepoList: React.FC<RepoListProps> = ({ match }) => {
                 <ul>
                     {repos.allIds.map(id => (
                         <li key={repos.byId[id].id}>
-                            <Link to={`/projects/${provider}/${username}/${repos.byId[id].name}`}>
-                                {repos.byId[id].name}
+                            <Link to={`/projects/${provider}/${username}/${repos.byId[id].data.name}`}>
+                                {repos.byId[id].data.name}
                             </Link>
                         </li>
                     ))}

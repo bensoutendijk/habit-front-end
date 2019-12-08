@@ -4,7 +4,8 @@ export const REJECT_PROJECTS = 'REJECT_PROJECTS';
 
 export interface Project {
     _id: string;
-    name: string;
+    serviceid: string;
+    repoid: string;
 }
 
 export interface ProjectsState {

@@ -8,6 +8,7 @@ import {
 } from './types';
 import { ThunkAction } from 'redux-thunk';
 import { AppState } from '..';
+import { Repo } from '../repos/types';
 
 export function requestProjects(): ProjectsActionTypes {
     return {
@@ -25,6 +26,21 @@ export function recieveProjects(projects: Project[]): ProjectsActionTypes {
 export function rejectProjects(): ProjectsActionTypes {
     return {
         type: REJECT_PROJECTS,
+    }
+}
+
+export const createProject = (repo: Repo): ThunkAction<void, AppState, null, ProjectsActionTypes> => async (dispatch) => {
+    dispatch(requestProjects());
+    try {
+        const project = {
+            serviceid: repo.service._id,
+            repoid: repo.id,
+        };
+        const { data } = await axios.post('/api/projects', project);
+        dispatch(recieveProjects(data))
+    } catch (error) {
+        const { data } = error.response;
+        dispatch(rejectProjects());
     }
 }
 

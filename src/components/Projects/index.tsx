@@ -5,11 +5,12 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core';
 
 import Loading from '../Loading';
 import ProjectList from './ProjectList';
+import ProjectNew from './ProjectNew';
+import ProjectView from './ProjectView';
+import Services from '../Services';
 
 import { useDispatch } from 'react-redux';
 import { fetchProjects } from '../../store/projects/actions';
-import ProjectNew from './ProjectNew';
-import ProjectView from './ProjectView';
 
 const Projects: React.FC = () => {
     const dispatch = useDispatch();
@@ -32,8 +33,8 @@ const Projects: React.FC = () => {
 
     return (
         <Switch>
-            <Route path="/projects/:provider/:username/:reponame" component={ProjectView}/>
             <Route path="/projects/new" component={ProjectNew} />
+            <Route exact path="/projects/:provider/:username/:reponame" component={ProjectView} />
             <Route component={ProjectList} />
         </Switch>
     )

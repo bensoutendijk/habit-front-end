@@ -5,25 +5,21 @@ import Loading from '../Loading';
 import RepoList from './RepoList';
 import RepoView from './RepoView';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { selectService } from '../../selectors';
-import { Service } from '../../store/services/types';
+import { useDispatch } from 'react-redux';
 import { fetchRepos } from '../../store/repos/actions';
 
-const Repos: React.FC<ReposProps> = ({ match }) => {
-    const { params: { provider, username } } = match;
+const Repos: React.FC = () => {
     const dispatch = useDispatch();
-    const service: Service = useSelector(selectService(provider, username));
     const [ready, setReady] = useState(false);
 
     useEffect(() => {
-        const getRepos = async (service: Service) => {
-            await dispatch(fetchRepos(service));
+        const getRepos = async () => {
+            await dispatch(fetchRepos());
         }
     
-        getRepos(service)
+        getRepos()
             .then(() => setReady(true));
-    }, [dispatch, service]);
+    }, [dispatch]);
 
     if (!ready) {
         return (
@@ -37,15 +33,6 @@ const Repos: React.FC<ReposProps> = ({ match }) => {
             <Route component={RepoList} />
         </Switch>
     )
-}
-
-interface MatchProps {
-    username: string;
-    provider: string;
-}
-
-interface ReposProps extends RouteComponentProps<MatchProps> {
-
 }
 
 export default Repos;

@@ -29,11 +29,27 @@ export function rejectRepos(): ReposActionTypes {
     }
 }
 
-export const fetchRepos = (service: Service): ThunkAction<void, AppState, null, ReposActionTypes> => async (dispatch) => {
-    const { data: { username }, provider } = service;
+export const fetchRepos = (): ThunkAction<void, AppState, null, ReposActionTypes> => async (dispatch) => {
     dispatch(requestRepos());
     try {
-        const { data } = await axios.get(`/api/services/${provider}/${username}/repos`);
+        const { data } = await axios.get(`/api/repos`);
+        dispatch(recieveRepos(data))
+    } catch (error) {
+        dispatch(rejectRepos());
+    }
+}
+
+export const fetchRepoDetails = (repo: Repo): ThunkAction<void, AppState, null, ReposActionTypes> => async (dispatch) => {
+    const { name } = repo.data;
+    dispatch(requestRepos());
+    try {
+        const { data: details } = await axios.get(`/api/repos/${name}/details`);
+        const data = [
+            {
+                ...repo,
+                details,
+            }
+        ]
         dispatch(recieveRepos(data))
     } catch (error) {
         dispatch(rejectRepos());

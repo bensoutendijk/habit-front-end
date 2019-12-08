@@ -1,3 +1,5 @@
+import { Service } from "../services/types";
+
 export const REQUEST_REPOS = 'REQUEST_REPOS';
 export const RECIEVE_REPOS = 'RECIEVE_REPOS';
 export const REJECT_REPOS = 'REJECT_REPOS';
@@ -5,6 +7,8 @@ export const REJECT_REPOS = 'REJECT_REPOS';
 export interface Repo {
     id: string;
     data: RepoData;
+    service: Service;
+    details: RepoDetails;
 }
 
 export interface RepoData {
@@ -107,11 +111,51 @@ export interface RepoData {
     };
 }
 
+export interface RepoContents {
+    name: string;
+    path: string;
+    sha: string;
+    size: number;
+    url: string;
+    html_url: string;
+    git_url: string;
+    download_url: string;
+    type: string;
+    _links: {
+        self: string;
+        git: string;
+        html: string;
+    };
+    contents: RepoContents[] | undefined;
+}
+
+export interface RepoBranch {
+    name: string;
+    commit: {
+        sha: string;
+        url: string;
+    };
+    protected: boolean;
+    protection: {
+        enabled: boolean;
+        required_status_checks: {
+            enforcement_level: string;
+            contexts: any[];
+        };
+    };
+    protection_url: string;
+}
+
+export interface RepoDetails {
+    contents: RepoContents[];
+    branches: RepoBranch[];
+}
+
 export interface ReposState {
     fetched: boolean;
     fetching: boolean;
     byId: {
-        [key: string]: RepoData;
+        [key: string]: Repo;
     };
     allIds: string[];
 }
