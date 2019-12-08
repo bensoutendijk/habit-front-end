@@ -29,7 +29,7 @@ const ProjectList: React.FC = () => {
                         
                         return (
                             <li key={id}>
-                                <Link to={`/projects/${provider}/${username}/${reponame}`}>
+                                <Link to={`/projects/${reponame}`}>
                                     {repos.byId[projects.byId[id].repoid].data.name}
                                 </Link>
                             </li>

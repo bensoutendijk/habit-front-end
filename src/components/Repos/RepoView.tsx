@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
 }));
 
-const RepoSettings: React.FC<RepoSettingsProps> = ({ match }) => {
+const RepoView: React.FC<RepoViewProps> = ({ match }) => {
     const { params: { reponame } } = match;
     const classes = useStyles({});
     const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const RepoSettings: React.FC<RepoSettingsProps> = ({ match }) => {
 
     return (
         <div className={classes.root}>
-            <h3>Repo Settings</h3>
+            <h3>Repo View</h3>
             {repo ? (
                 <div>
                     <h4>{repo.data.name}</h4>
@@ -52,7 +52,6 @@ const RepoSettings: React.FC<RepoSettingsProps> = ({ match }) => {
                                     <span>
                                         {branch.name}
                                     </span>
-                                    <Link to={`${match.url}/branches/${encodeURI(branch.name)}/deploy`}>Deploy</Link>
                                 </div>
                             </li>
                         ))}
@@ -71,8 +70,8 @@ interface MatchProps {
     reponame: string;
 }
 
-interface RepoSettingsProps extends RouteComponentProps<MatchProps> {
+interface RepoViewProps extends RouteComponentProps<MatchProps> {
   
 }
 
-export default RepoSettings;
+export default RepoView;

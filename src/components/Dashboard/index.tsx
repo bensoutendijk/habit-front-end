@@ -17,7 +17,7 @@ const Dashboard: React.FC = () => {
 
     return (
         <div className={classes.root}>
-            <h3>Dashboard</h3>
+            <h2>Dashboard</h2>
             <div>
                 <Projects />
                 <Repos />

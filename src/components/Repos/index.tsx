@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Loading from '../Loading';
 import RepoList from './RepoList';
 import RepoSettings from './RepoSettings';
+import RepoView from './RepoView';
 
 import { useDispatch } from 'react-redux';
 import { fetchRepos } from '../../store/repos/actions';
@@ -22,16 +23,16 @@ const Repos: React.FC = () => {
     }, [dispatch]);
 
     if (!ready) {
-        return (
-            <Loading />
-        )
+        return null
     }
 
     return (
-        <Switch>
-            <Route exact path="/projects/:provider/:username/:reponame" component={RepoSettings} />
-            <Route component={RepoList} />
-        </Switch>
+        <>
+            <Route exact path="/projects/:reponame" component={RepoSettings} />
+            <Route exact path="/projects/:reponame" component={RepoView} />
+            <Route exact path="/projects/new" component={RepoList} />
+            <Route path="/services" component={RepoList} />
+        </>
     )
 }
 

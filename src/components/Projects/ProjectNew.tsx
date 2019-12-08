@@ -15,8 +15,7 @@ const ProjectNew: React.FC = () => {
 
     return (
         <div className={classes.root}>
-            New Project <br/>
-            Create from Repository <br/>
+            <h2>New Project</h2>
             <Services />
         </div>
     )

@@ -10,15 +10,15 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     }
 }));
 
-const ProjectSettings: React.FC = () => {
+const ProjectView: React.FC = () => {
     const classes = useStyles({});
 
     return (
         <div className={classes.root}>
-            <h4>Project Settings</h4>
+            <h2>Project</h2>
             <Repos />
         </div>
     )
 }
 
-export default ProjectSettings;
+export default ProjectView;

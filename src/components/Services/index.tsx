@@ -30,7 +30,7 @@ const Services: React.FC = () => {
     return (
         <Switch>
             <Route exact path="/services/:provider/:username" component={ServiceView} />
-            <Route component={ServiceList} />
+            <Route exact path="/projects/new" component={ServiceList} />
         </Switch>
     )
 }
