@@ -17,14 +17,20 @@ const ProjectList: React.FC = () => {
     const projects = useSelector((state: AppState) => state.projects);
     const repos = useSelector((state: AppState) => state.repos);
     
+    if (!projects.fetched) {
+        return null;
+    }
+
+    if (!repos.fetched) {
+        return null;
+    }
+
     return (
         <div className={classes.root}>
             <h4>Project List</h4>
             {projects.allIds.length && repos.allIds.length ? (
                 <ul>
                     {projects.allIds.map((id) => {
-                        const provider = repos.byId[projects.byId[id].repoid].service.provider;
-                        const username = repos.byId[projects.byId[id].repoid].data.owner.login;
                         const reponame = repos.byId[projects.byId[id].repoid].data.name;
                         
                         return (
