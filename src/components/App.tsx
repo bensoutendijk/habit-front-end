@@ -73,7 +73,7 @@ function App() {
                         <Route path="/services" component={Services} />
                         {/* <Route exact path="/services/:provider/:username/repos/:reponame" component={RepoView} /> */}
                         {/* <Route exact path="/logout" component={LogOut} /> */}
-                        {/* <Redirect to="/" /> */}
+                        <Redirect from="/login" to="/" />
                     </Switch>
                 ) : (
                     <Switch>
